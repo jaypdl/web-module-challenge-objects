@@ -13,8 +13,8 @@ The function should:
   2. Create and return an object using the received values  
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+    return {name, price, category};
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -25,6 +25,10 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+console.log(createMenuItem('Pizza', 5, 'Lunch'));
+console.log(createMenuItem('Chicken', 6, 'Lunch'));
+console.log(createMenuItem('Salad', 5, 'Lunch'));
+
 
 
 
@@ -45,8 +49,20 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(who) {
+    if (who === ("teacher" || "student")){
+      // console.log(this.price - (this.price * .25));
+      // console.log(this.price - (this.price * .10));
+      return this.price - (this.price * .25);
+    } else if (who === "public") {
+      // console.log(this.price - (this.price * .10));
+      return this.price - (this.price * .10);
+    } else {
+      return this.price;
+    }
+  }
 }
+// console.log(burger.discount('public'));
 
 
 
@@ -66,7 +82,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console
 */
-
+console.log(reviews[5].feedback);
 
 
 
@@ -76,6 +92,8 @@ Using the reviews array above do the following:
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+reviews.push({name: 'Jay', rating: 5, feedback: 'Best Place Ever!'});
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -83,8 +101,8 @@ Reyna's feedback is missing! Use what you know to do the following:
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
-
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews);
 
 
 
@@ -98,8 +116,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(arr, ind) {
+  return `${arr[ind].name} gave the restaurant a ${arr[ind].rating} star review, and their feedback was: ${arr[ind].feedback}`;
 }
 
 
@@ -116,8 +134,8 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(arr) {
+  return `${arr[(arr.length-1)].name} gave the restaurant a ${arr[(arr.length-1)].rating} star review, and their feedback was: ${arr[(arr.length-1)].feedback}`;
 } 
 
 
@@ -138,10 +156,16 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(arr,rateQuery) {
+    for (i = 0; i < arr.length; i++){
+      let matching = [];
+      if (arr[i].rating.includes(rateQuery)){
+        matching.push(arr[i]);
+      }
+    }
+    console.log(matching);
   }
-
+// getReviewByRating(reviews,4);
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
 Use the getLongReviews function below to do the following:
